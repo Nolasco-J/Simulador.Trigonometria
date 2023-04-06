@@ -1,2 +1,3 @@
-# Simulador.Trigonometria
-Simulador de Trigonometria para apoio ao ensino
+# Simulador de Trigonometria
+
+Simulador de Trigonometria no Ciclo para apoio ao ensino.
