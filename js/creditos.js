@@ -172,8 +172,8 @@ App.creditos = (function ()
         && y >= 235
         && y <= 250)
       {
-        console.log("CLICOU no " + linkBackground);
-        window.location.href = linkBackground;
+        // window.location.href = linkBackground;
+        window.open(linkBackground,'_blank');
       }
       //Botão 45°
       else if(x >= objCanvas.canvasWidth/2 - (objCanvas.canvasWidth/3) + 200
@@ -181,8 +181,8 @@ App.creditos = (function ()
         && y >= 260
         && y <= 280)
       {
-        console.log("CLICOU no " + linkFrame);
-        window.location.href = linkFrame;
+        // window.location.href = linkFrame;
+        window.open(linkFrame,'_blank');
       }
     });
   }
