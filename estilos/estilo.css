@@ -1,4 +1,4 @@
-﻿/*Garante não haver bordas com focus, seleção, pós click e etc.... em nada*/
+/*Garante não haver bordas com focus, seleção, pós click e etc.... em nada*/
 * {
     outline: none;
     overflow: hidden;
@@ -103,7 +103,7 @@ button{
 	display: inline;
 	text-align: center;
 	text-transform: uppercase;
-	width: 120px;
+	width: 130px;
 	height: 100%;
 	font-size: 20px;
 	font-family: Trebuchet MS;
@@ -116,14 +116,14 @@ button{
 	background-image: url('../imagens/botaoAzul.png');
 	margin-top: 0px;
 	margin-bottom: 0px;
-	margin-left: 10px;
-	margin-right: 10px;
+	margin-left: 8px;
+	margin-right: 8px;
 	border: 0;
 }
 button:active{
-	background-color: #1c4f64;
-	background-size: 145px 43px;
-	font-size: 15px;
+	width: 125px;
+	background-size: 125px 44px;
+	font-size: 18px;
 }
 
 @media screen and (min-width: 1000px) and (min-height: 550px){
