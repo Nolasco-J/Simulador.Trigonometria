@@ -1,0 +1,143 @@
+﻿/*Garante não haver bordas com focus, seleção, pós click e etc.... em nada*/
+* {
+    outline: none;
+    overflow: hidden;
+}
+html, body{
+	width: 100%;
+	min-height: 100%;
+	height: 100%;
+	border-width: 0;
+	margin: auto;
+	font-family: Arial;
+	background-color: black !important;
+	background: url('../imagens/math.jpg') no-repeat;
+	background-size: 100% 100%;
+}
+p{
+	text-align: center;
+	font-size: 1.5em;
+	font-family: "Arial";
+	font-weight: bold;
+}
+.preloader {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    top: 0px;
+    z-index: 10;
+	background-color: black !important;
+    display: -webkit-flex;
+	display: flex;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+}
+.aviso{
+	position: absolute;
+	width: 100%;
+	top: 50%;
+	transform: translateY(-50%);
+	background-color: #000 !important;
+	color: #fff;
+}
+.container{
+  /*O container principal deve ser centralizado na vertical
+  e como não foi especificado altura e largura, irá se adaptar ao conteúdo*/
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+
+	/* MAIS NOVO *************************************************/
+	display: -webkit-flex;
+	display: flex;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+}
+.mainArea{
+	width:1000px;
+	height:550px;
+	background-color: transparent;
+	padding: 0px;
+	
+	display: -webkit-flex;
+	display: flex;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	flex-direction: row;
+}
+div.divCanvas{
+	width:1000px;
+	height:500px;
+	padding: 0px;
+	background-color: transparent;
+	margin-top: -50px;
+	border: 0;
+	position: absolute;
+
+}
+.objectCanvas{
+	background-color: transparent;
+	border: 0;
+}
+.menu{
+	width: 1000px;
+	height: 50px;
+	border-width: 0px;
+	margin: auto;
+	clear: both;
+	text-align: center;
+	background-color: transparent;
+	bottom: 0;
+	border: 0;
+	position: absolute;
+	z-index: 20;
+}
+button{
+	display: inline;
+	text-align: center;
+	text-transform: uppercase;
+	width: 130px;
+	height: 100%;
+	font-size: 20px;
+	font-family: Trebuchet MS;
+	color: aqua;
+	padding-top: 0px;
+	background-position: 0 0;
+	background-size: 99% 90%;
+	background-repeat: no-repeat;
+	background-color: transparent;
+	background-image: url('../imagens/botaoAzul.png');
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: 8px;
+	margin-right: 8px;
+	border: 0;
+}
+button:active{
+	width: 125px;
+	background-size: 125px 44px;
+	font-size: 18px;
+}
+
+@media screen and (min-width: 1000px) and (min-height: 550px){
+	.aviso{
+		display: none;
+	}
+}
+@media screen and (max-width: 999px){
+	.container{
+		display: none;
+	}
+}
+@media screen and (max-height: 549px){
+	.container{
+		display: none;
+	}
+} 
