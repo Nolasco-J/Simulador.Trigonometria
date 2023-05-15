@@ -18,6 +18,7 @@ App.aplicacoes = (function ()
   //Constantes numéricas - ângulos principais
   var CENTO_OITENTA = Math.PI;
   var NOVENTA = CENTO_OITENTA/2;
+  var DUZENTOS_SETENTA = CENTO_OITENTA + NOVENTA;
   
   $(document).ready( function()
   {
@@ -117,7 +118,7 @@ App.aplicacoes = (function ()
       4
     ]);
 
-    // Coordenadas do ponto inicial para desenhar a base do corpo sobre o plano
+    // Coordenadas dos pontos vértices do quadrilátero (corpo sobre o plano inclinado)
     var pontoA = App.strategiesCalculadora.ponto.calcula([angRadInicial, X_ZERO, Y_ZERO, (BASE/18)*9]);
     var pontoB = App.strategiesCalculadora.ponto.calcula([angRadInicial, X_ZERO, Y_ZERO, (BASE/18)*12]);
     var pontoC = App.strategiesCalculadora.ponto.calcula([angRadInicial + NOVENTA, pontoB[0], pontoB[1], (BASE/18)*3]);
@@ -162,6 +163,40 @@ App.aplicacoes = (function ()
       "#F00",
       4
     ]); 
+
+
+    // Ângulo entre Py e P
+    var angRetaP = CENTO_OITENTA-(DUZENTOS_SETENTA-angRadInicial)
+
+
+    // Coornedadas do ponto central do quadrilátero, 
+    // que será início para as retas N, P, Px e Py
+    var NovoXZero = (pontoA[0]+pontoC[0])/2
+    var NovoYZero = (pontoA[1]+pontoC[1])/2
+
+    // Coordenadas dos pontos para:
+    //  a reta que representa o sentido da força normal N
+    //  a reta que representa a força peso (gravidade) P
+    //  a reta Px 
+    //  a reta Py    
+    var pontoE = App.strategiesCalculadora.ponto.calcula([angRadInicial + NOVENTA, NovoXZero, NovoYZero, (BASE/18)*4]);
+    var pontoF = App.strategiesCalculadora.ponto.calcula([angRadInicial - NOVENTA, NovoXZero, NovoYZero, (BASE/18)*4]);
+    var pontoG = App.strategiesCalculadora.ponto.calcula([angRadInicial - angRetaP, NovoXZero, NovoYZero, (BASE/18)*4]);
+    var pontoG = App.strategiesCalculadora.ponto.calcula([angRadInicial - angRetaP, NovoXZero, NovoYZero, (BASE/18)*4]);
+    var pontoH = App.strategiesCalculadora.ponto.calcula([angRadInicial - CENTO_OITENTA, NovoXZero, NovoYZero, (BASE/18)*4]);
+
+    // Reta - Força N
+    desenhaReta(NovoXZero, NovoYZero, pontoE[0], pontoE[1], "#0F0", 4);
+
+    // Reta - Px
+    desenhaReta(NovoXZero, NovoYZero, pontoH[0], pontoH[1], "#CCC", 4);
+
+    // Reta - Py
+    desenhaReta(NovoXZero, NovoYZero, pontoF[0], pontoF[1], "#00F", 4);
+
+    // Reta - P
+    desenhaReta(NovoXZero, NovoYZero, pontoG[0], pontoG[1], "#F0F", 4);
+
   }
 
   //Recebe as coordenadas para calcular o novo ponto
@@ -200,16 +235,8 @@ App.aplicacoes = (function ()
       ]);        
     }
 
-    //Reta Vermelha que delimita o ângulo
-    App.strategiesTela.construtorReta.executa([
-      "1",
-      X_ZERO,
-      Y_ZERO,
-      pontoX,
-      pontoY,
-      "#FFF",
-      4
-    ]);
+    //
+    desenhaReta(X_ZERO, Y_ZERO, pontoX, pontoY, "#FFF", 4);
 
     // Coordenadas do ponto inicial para desenhar a base do corpo sobre o plano
     var pontoA = App.strategiesCalculadora.ponto.calcula([angRad, X_ZERO, Y_ZERO, (BASE/18)*9]);
@@ -217,47 +244,59 @@ App.aplicacoes = (function ()
     var pontoC = App.strategiesCalculadora.ponto.calcula([angRad + NOVENTA, pontoB[0], pontoB[1], (BASE/18)*3]);
     var pontoD = App.strategiesCalculadora.ponto.calcula([angRad + NOVENTA, pontoA[0], pontoA[1], (BASE/18)*3]);
 
-    App.strategiesTela.construtorReta.executa([
-      "1",
-      pontoA[0],
-      pontoA[1],
-      pontoB[0],
-      pontoB[1],
-      "#F00",
-      4
-    ]);
+    desenhaReta(pontoA[0], pontoA[1], pontoB[0], pontoB[1], "#F00", 4);
+    desenhaReta(pontoB[0], pontoB[1], pontoC[0], pontoC[1], "#F00", 4);
+    desenhaReta(pontoC[0], pontoC[1], pontoD[0], pontoD[1], "#F00", 4);
+    desenhaReta(pontoA[0], pontoA[1], pontoD[0], pontoD[1], "#F00", 4);
 
-    App.strategiesTela.construtorReta.executa([
-      "1",
-      pontoB[0],
-      pontoB[1],
-      pontoC[0],
-      pontoC[1],
-      "#F00",
-      4
-    ]);
 
-    App.strategiesTela.construtorReta.executa([
-      "1",
-      pontoC[0],
-      pontoC[1],
-      pontoD[0],
-      pontoD[1],
-      "#F00",
-      4
-    ]);
+    // Ângulo entre Py e P
+    var angRetaP = CENTO_OITENTA-(DUZENTOS_SETENTA-angRad)
 
-    App.strategiesTela.construtorReta.executa([
-      "1",
-      pontoA[0],
-      pontoA[1],
-      pontoD[0],
-      pontoD[1],
-      "#F00",
-      4
-    ]);
+
+    // Coornedadas do ponto central do quadrilátero, 
+    // que será início para as retas N, P, Px e Py
+    var NovoXZero = (pontoA[0]+pontoC[0])/2
+    var NovoYZero = (pontoA[1]+pontoC[1])/2
+
+    // Coordenadas dos pontos para:
+    //  a reta que representa o sentido da força normal N
+    //  a reta que representa a força peso (gravidade) P
+    //  a reta Px 
+    //  a reta Py    
+    var pontoE = App.strategiesCalculadora.ponto.calcula([angRad + NOVENTA, NovoXZero, NovoYZero, (BASE/18)*4]);
+    var pontoF = App.strategiesCalculadora.ponto.calcula([angRad - NOVENTA, NovoXZero, NovoYZero, (BASE/18)*4]);
+    var pontoG = App.strategiesCalculadora.ponto.calcula([angRad - angRetaP, NovoXZero, NovoYZero, (BASE/18)*4]);
+    var pontoG = App.strategiesCalculadora.ponto.calcula([angRad - angRetaP, NovoXZero, NovoYZero, (BASE/18)*4]);
+    var pontoH = App.strategiesCalculadora.ponto.calcula([angRad - CENTO_OITENTA, NovoXZero, NovoYZero, (BASE/18)*4]);
+
+    // Reta - Força N
+    desenhaReta(NovoXZero, NovoYZero, pontoE[0], pontoE[1], "#0F0", 4);
+
+    // Reta - Px
+    desenhaReta(NovoXZero, NovoYZero, pontoH[0], pontoH[1], "#FFF", 4);
+
+    // Reta - Py
+    desenhaReta(NovoXZero, NovoYZero, pontoF[0], pontoF[1], "#00F", 4);
+
+    // Reta - P
+    desenhaReta(NovoXZero, NovoYZero, pontoG[0], pontoG[1], "#F0F", 4);
 
   }// Fim Função Redesenha
+
+  // Função que chama o contrutor reta, passando os parâmetros recebidos
+  var desenhaReta = function (pontoXo, pontoYo, pontoX, pontoY, cor, espessura){
+
+    App.strategiesTela.construtorReta.executa([
+      "1",
+      pontoXo,
+      pontoYo,
+      pontoX,
+      pontoY,
+      cor,
+      espessura
+    ]);
+  }
 
   // Fora da função, pois deve guardar o valor final dentro da função
   //var angFinal = 150° --- corrigido, equivale a 30° com o espelhamento da imagem, que é o que queremos;
@@ -330,6 +369,8 @@ App.aplicacoes = (function ()
       //reEscreve(360-angFinal);**********************************************************************************
     });
   } //Fim ajustaKeydown
+
+
 
   /*
     Detecta cliques
