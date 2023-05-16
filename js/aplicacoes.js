@@ -77,6 +77,48 @@ App.aplicacoes = (function ()
       objCanvas.canvasHeight - 5
     ]);
 
+    //Fundo da área de texto
+    App.strategiesTela.construtorCorFundo.executa([
+      "2",
+      "#006",
+      objCanvas.canvasWidth/2 + objCanvas.canvasWidth/22,
+      140,
+      objCanvas.canvasWidth/2 - objCanvas.canvasWidth/8,
+      objCanvas.canvasHeight/2 + objCanvas.canvasHeight/15
+    ]);
+
+        /*
+      Mensagem de Informação e Título
+    */
+      mensagem = "Aplicações na Física - Plano Inclinado";
+      App.strategiesTela.construtorTexto.executa([
+        "2",
+        mensagem,
+        "#0fc",
+        "Bold 32px Trebuchet MS",
+        objCanvas.canvasWidth/2 + objCanvas.canvasWidth/22 - ((BASE/18)*9),
+        70
+      ]);
+
+    mensagem = "Utilize as teclas direcionais";
+    App.strategiesTela.construtorTexto.executa([
+      "2",
+      mensagem,
+      "#0fc",
+      "Bold 18px Trebuchet MS",
+      objCanvas.canvasWidth/2 + objCanvas.canvasWidth/22 + ((BASE/18)*3),
+      100
+    ]);
+    mensagem = "do seu teclado para interagir.";
+    App.strategiesTela.construtorTexto.executa([
+      "2",
+      mensagem,
+      "#0fc",
+      "Bold 18px Trebuchet MS",
+      objCanvas.canvasWidth/2 + objCanvas.canvasWidth/22 + ((BASE/18)*3),
+      125
+    ]);
+
      //Base do plano inclinado - no canvas 2 pois não precisa redesenhar
     desenhaReta((X_ZERO)-(BASE), Y_ZERO, (X_ZERO), Y_ZERO, "#FFF", 4, "2");
 
