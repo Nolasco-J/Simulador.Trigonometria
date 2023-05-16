@@ -77,16 +77,8 @@ App.aplicacoes = (function ()
       objCanvas.canvasHeight - 5
     ]);
 
-     //Base do plano inclinado
-     App.strategiesTela.construtorReta.executa([
-      "2",
-      (X_ZERO)-(BASE),
-      Y_ZERO,
-      (X_ZERO),
-      Y_ZERO,
-      "#FFF",
-      4
-    ]);
+     //Base do plano inclinado - no canvas 2 pois não precisa redesenhar
+    desenhaReta((X_ZERO)-(BASE), Y_ZERO, (X_ZERO), Y_ZERO, "#FFF", 4, "2");
 
     // Ângulo inicial: 30°
     var angRadInicial = (210*CENTO_OITENTA)/180;
@@ -108,15 +100,7 @@ App.aplicacoes = (function ()
     var ponto = App.strategiesCalculadora.ponto.calcula([angRadInicial, X_ZERO, Y_ZERO, BASE]);
 
     // Plano inclidado móvel - primeira posição: 30°
-    App.strategiesTela.construtorReta.executa([
-      "1",
-      ponto[0],
-      ponto[1],
-      X_ZERO,
-      Y_ZERO,
-      "#FFF",
-      4
-    ]);
+    desenhaReta(ponto[0], ponto[1], X_ZERO, Y_ZERO, "#FFF", 4, "1");
 
     // Coordenadas dos pontos vértices do quadrilátero (corpo sobre o plano inclinado)
     var pontoA = App.strategiesCalculadora.ponto.calcula([angRadInicial, X_ZERO, Y_ZERO, (BASE/18)*9]);
@@ -124,46 +108,10 @@ App.aplicacoes = (function ()
     var pontoC = App.strategiesCalculadora.ponto.calcula([angRadInicial + NOVENTA, pontoB[0], pontoB[1], (BASE/18)*3]);
     var pontoD = App.strategiesCalculadora.ponto.calcula([angRadInicial + NOVENTA, pontoA[0], pontoA[1], (BASE/18)*3]);
 
-    App.strategiesTela.construtorReta.executa([
-      "1",
-      pontoA[0],
-      pontoA[1],
-      pontoB[0],
-      pontoB[1],
-      "#F00",
-      4
-    ]);
-
-    App.strategiesTela.construtorReta.executa([
-      "1",
-      pontoB[0],
-      pontoB[1],
-      pontoC[0],
-      pontoC[1],
-      "#F00",
-      4
-    ]);
-
-    App.strategiesTela.construtorReta.executa([
-      "1",
-      pontoC[0],
-      pontoC[1],
-      pontoD[0],
-      pontoD[1],
-      "#F00",
-      4
-    ]);
-
-    App.strategiesTela.construtorReta.executa([
-      "1",
-      pontoA[0],
-      pontoA[1],
-      pontoD[0],
-      pontoD[1],
-      "#F00",
-      4
-    ]); 
-
+    desenhaReta(pontoA[0], pontoA[1], pontoB[0], pontoB[1], "#F00", 4, "1");
+    desenhaReta(pontoB[0], pontoB[1], pontoC[0], pontoC[1], "#F00", 4, "1");
+    desenhaReta(pontoC[0], pontoC[1], pontoD[0], pontoD[1], "#F00", 4, "1");
+    desenhaReta(pontoA[0], pontoA[1], pontoD[0], pontoD[1], "#F00", 4, "1");
 
     // Ângulo entre Py e P
     var angRetaP = CENTO_OITENTA-(DUZENTOS_SETENTA-angRadInicial)
@@ -186,16 +134,16 @@ App.aplicacoes = (function ()
     var pontoH = App.strategiesCalculadora.ponto.calcula([angRadInicial - CENTO_OITENTA, NovoXZero, NovoYZero, (BASE/18)*4]);
 
     // Reta - Força N
-    desenhaReta(NovoXZero, NovoYZero, pontoE[0], pontoE[1], "#0F0", 4);
+    desenhaReta(NovoXZero, NovoYZero, pontoE[0], pontoE[1], "#0F0", 4, "1");
 
     // Reta - Px
-    desenhaReta(NovoXZero, NovoYZero, pontoH[0], pontoH[1], "#CCC", 4);
+    desenhaReta(NovoXZero, NovoYZero, pontoH[0], pontoH[1], "#CCC", 4, "1");
 
     // Reta - Py
-    desenhaReta(NovoXZero, NovoYZero, pontoF[0], pontoF[1], "#00F", 4);
+    desenhaReta(NovoXZero, NovoYZero, pontoF[0], pontoF[1], "#00F", 4, "1");
 
     // Reta - P
-    desenhaReta(NovoXZero, NovoYZero, pontoG[0], pontoG[1], "#F0F", 4);
+    desenhaReta(NovoXZero, NovoYZero, pontoG[0], pontoG[1], "#F0F", 4, "1");
 
   }
 
@@ -236,7 +184,7 @@ App.aplicacoes = (function ()
     }
 
     //
-    desenhaReta(X_ZERO, Y_ZERO, pontoX, pontoY, "#FFF", 4);
+    desenhaReta(X_ZERO, Y_ZERO, pontoX, pontoY, "#FFF", 4, "1");
 
     // Coordenadas do ponto inicial para desenhar a base do corpo sobre o plano
     var pontoA = App.strategiesCalculadora.ponto.calcula([angRad, X_ZERO, Y_ZERO, (BASE/18)*9]);
@@ -244,10 +192,10 @@ App.aplicacoes = (function ()
     var pontoC = App.strategiesCalculadora.ponto.calcula([angRad + NOVENTA, pontoB[0], pontoB[1], (BASE/18)*3]);
     var pontoD = App.strategiesCalculadora.ponto.calcula([angRad + NOVENTA, pontoA[0], pontoA[1], (BASE/18)*3]);
 
-    desenhaReta(pontoA[0], pontoA[1], pontoB[0], pontoB[1], "#F00", 4);
-    desenhaReta(pontoB[0], pontoB[1], pontoC[0], pontoC[1], "#F00", 4);
-    desenhaReta(pontoC[0], pontoC[1], pontoD[0], pontoD[1], "#F00", 4);
-    desenhaReta(pontoA[0], pontoA[1], pontoD[0], pontoD[1], "#F00", 4);
+    desenhaReta(pontoA[0], pontoA[1], pontoB[0], pontoB[1], "#F00", 4, "1");
+    desenhaReta(pontoB[0], pontoB[1], pontoC[0], pontoC[1], "#F00", 4, "1");
+    desenhaReta(pontoC[0], pontoC[1], pontoD[0], pontoD[1], "#F00", 4, "1");
+    desenhaReta(pontoA[0], pontoA[1], pontoD[0], pontoD[1], "#F00", 4, "1");
 
 
     // Ângulo entre Py e P
@@ -271,24 +219,24 @@ App.aplicacoes = (function ()
     var pontoH = App.strategiesCalculadora.ponto.calcula([angRad - CENTO_OITENTA, NovoXZero, NovoYZero, (BASE/18)*4]);
 
     // Reta - Força N
-    desenhaReta(NovoXZero, NovoYZero, pontoE[0], pontoE[1], "#0F0", 4);
+    desenhaReta(NovoXZero, NovoYZero, pontoE[0], pontoE[1], "#0F0", 4, "1");
 
     // Reta - Px
-    desenhaReta(NovoXZero, NovoYZero, pontoH[0], pontoH[1], "#FFF", 4);
+    desenhaReta(NovoXZero, NovoYZero, pontoH[0], pontoH[1], "#FFF", 4, "1");
 
     // Reta - Py
-    desenhaReta(NovoXZero, NovoYZero, pontoF[0], pontoF[1], "#00F", 4);
+    desenhaReta(NovoXZero, NovoYZero, pontoF[0], pontoF[1], "#00F", 4, "1");
 
     // Reta - P
-    desenhaReta(NovoXZero, NovoYZero, pontoG[0], pontoG[1], "#F0F", 4);
+    desenhaReta(NovoXZero, NovoYZero, pontoG[0], pontoG[1], "#F0F", 4, "1");
 
   }// Fim Função Redesenha
 
   // Função que chama o contrutor reta, passando os parâmetros recebidos
-  var desenhaReta = function (pontoXo, pontoYo, pontoX, pontoY, cor, espessura){
+  var desenhaReta = function (pontoXo, pontoYo, pontoX, pontoY, cor, espessura, canvas){
 
     App.strategiesTela.construtorReta.executa([
-      "1",
+      canvas,
       pontoXo,
       pontoYo,
       pontoX,
