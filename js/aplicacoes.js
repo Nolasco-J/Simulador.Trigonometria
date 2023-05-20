@@ -7,7 +7,6 @@ App.aplicacoes = (function ()
 {  
   var primeiraTela; 
   var objCanvas;
-  var objImagens;
   var mensagem;
 
   //constantes
@@ -18,6 +17,7 @@ App.aplicacoes = (function ()
   //Constantes numéricas - ângulos principais
   var CENTO_OITENTA = Math.PI;
   var NOVENTA = CENTO_OITENTA/2;
+  var TRINTA = NOVENTA/3;
   var DUZENTOS_SETENTA = CENTO_OITENTA + NOVENTA;
   
   $(document).ready( function()
@@ -170,23 +170,41 @@ App.aplicacoes = (function ()
     //  a reta Px 
     //  a reta Py    
     var pontoE = App.strategiesCalculadora.ponto.calcula([angRadInicial + NOVENTA, NovoXZero, NovoYZero, (BASE/18)*4]);
-    var pontoF = App.strategiesCalculadora.ponto.calcula([angRadInicial - NOVENTA, NovoXZero, NovoYZero, (BASE/18)*4]);
-    var pontoG = App.strategiesCalculadora.ponto.calcula([angRadInicial - angRetaP, NovoXZero, NovoYZero, (BASE/18)*4]);
-    var pontoG = App.strategiesCalculadora.ponto.calcula([angRadInicial - angRetaP, NovoXZero, NovoYZero, (BASE/18)*4]);
-    var pontoH = App.strategiesCalculadora.ponto.calcula([angRadInicial - CENTO_OITENTA, NovoXZero, NovoYZero, (BASE/18)*4]);
+    var pontoF = App.strategiesCalculadora.ponto.calcula([angRadInicial - NOVENTA, NovoXZero, NovoYZero, (BASE/14)*4]);
+    var pontoG = App.strategiesCalculadora.ponto.calcula([angRadInicial - angRetaP, NovoXZero, NovoYZero, (BASE/16)*4]);
+    var pontoH = App.strategiesCalculadora.ponto.calcula([angRadInicial - CENTO_OITENTA, NovoXZero, NovoYZero, (BASE/16)*4]);
 
-    // Reta - Força N
-    desenhaReta(NovoXZero, NovoYZero, pontoE[0], pontoE[1], "#0F0", 4, "1");
+    var pontoI = App.strategiesCalculadora.ponto.calcula([angRadInicial + NOVENTA - (TRINTA/10), NovoXZero, NovoYZero, (BASE/18)*3.5]);
+    var pontoJ = App.strategiesCalculadora.ponto.calcula([angRadInicial + NOVENTA + (TRINTA/10), NovoXZero, NovoYZero, (BASE/18)*3.5]);
+    var pontoK = App.strategiesCalculadora.ponto.calcula([angRadInicial - NOVENTA - (TRINTA/10), NovoXZero, NovoYZero, (BASE/14)*3.5]);
+    var pontoL = App.strategiesCalculadora.ponto.calcula([angRadInicial - NOVENTA + (TRINTA/10), NovoXZero, NovoYZero, (BASE/14)*3.5]);
+    var pontoM = App.strategiesCalculadora.ponto.calcula([angRadInicial - angRetaP - (TRINTA/10), NovoXZero, NovoYZero, (BASE/16)*3.5]);
+    var pontoN = App.strategiesCalculadora.ponto.calcula([angRadInicial - angRetaP + (TRINTA/10), NovoXZero, NovoYZero, (BASE/16)*3.5]);
+    var pontoO = App.strategiesCalculadora.ponto.calcula([angRadInicial - CENTO_OITENTA - (TRINTA/10), NovoXZero, NovoYZero, (BASE/16)*3.5]);
+    var pontoP = App.strategiesCalculadora.ponto.calcula([angRadInicial - CENTO_OITENTA + (TRINTA/10), NovoXZero, NovoYZero, (BASE/16)*3.5]);
+
+
+    // Reta - Força N e seta
+    desenhaReta(NovoXZero, NovoYZero, pontoE[0], pontoE[1], "#0F0", 3, "1");
+    desenhaReta(pontoI[0], pontoI[1], pontoE[0], pontoE[1], "#0F0", 3, "1");
+    desenhaReta(pontoJ[0], pontoJ[1], pontoE[0], pontoE[1], "#0F0", 3, "1");
 
     // Reta - Px
-    desenhaReta(NovoXZero, NovoYZero, pontoH[0], pontoH[1], "#CCC", 4, "1");
+    desenhaReta(NovoXZero, NovoYZero, pontoH[0], pontoH[1], "#CCC", 3, "1");
+    desenhaReta(pontoO[0], pontoO[1], pontoH[0], pontoH[1], "#CCC", 3, "1");
+    desenhaReta(pontoP[0], pontoP[1], pontoH[0], pontoH[1], "#CCC", 3, "1");
 
     // Reta - Py
-    desenhaReta(NovoXZero, NovoYZero, pontoF[0], pontoF[1], "#00F", 4, "1");
+    desenhaReta(NovoXZero, NovoYZero, pontoF[0], pontoF[1], "#00F", 3, "1");
+    desenhaReta(pontoK[0], pontoK[1], pontoF[0], pontoF[1], "#00F", 3, "1");
+    desenhaReta(pontoL[0], pontoL[1], pontoF[0], pontoF[1], "#00F", 3, "1");
 
     // Reta - P
-    desenhaReta(NovoXZero, NovoYZero, pontoG[0], pontoG[1], "#F0F", 4, "1");
+    desenhaReta(NovoXZero, NovoYZero, pontoG[0], pontoG[1], "#F0F", 3, "1");
+    desenhaReta(pontoM[0], pontoM[1], pontoG[0], pontoG[1], "#F0F", 3, "1");
+    desenhaReta(pontoN[0], pontoN[1], pontoG[0], pontoG[1], "#F0F", 3, "1");
 
+    escreveForcas(pontoE, pontoF, pontoG, pontoH);
   }
 
   //Recebe as coordenadas para calcular o novo ponto
@@ -255,22 +273,50 @@ App.aplicacoes = (function ()
     //  a reta Px 
     //  a reta Py    
     var pontoE = App.strategiesCalculadora.ponto.calcula([angRad + NOVENTA, NovoXZero, NovoYZero, (BASE/18)*4]);
-    var pontoF = App.strategiesCalculadora.ponto.calcula([angRad - NOVENTA, NovoXZero, NovoYZero, (BASE/18)*4]);
-    var pontoG = App.strategiesCalculadora.ponto.calcula([angRad - angRetaP, NovoXZero, NovoYZero, (BASE/18)*4]);
-    var pontoG = App.strategiesCalculadora.ponto.calcula([angRad - angRetaP, NovoXZero, NovoYZero, (BASE/18)*4]);
-    var pontoH = App.strategiesCalculadora.ponto.calcula([angRad - CENTO_OITENTA, NovoXZero, NovoYZero, (BASE/18)*4]);
+    var pontoF = App.strategiesCalculadora.ponto.calcula([angRad - NOVENTA, NovoXZero, NovoYZero, (BASE/14)*4]);
+    var pontoG = App.strategiesCalculadora.ponto.calcula([angRad - angRetaP, NovoXZero, NovoYZero, (BASE/16)*4]);
+    var pontoH = App.strategiesCalculadora.ponto.calcula([angRad - CENTO_OITENTA, NovoXZero, NovoYZero, (BASE/16)*4]);
 
-    // Reta - Força N
-    desenhaReta(NovoXZero, NovoYZero, pontoE[0], pontoE[1], "#0F0", 4, "1");
+    var pontoI = App.strategiesCalculadora.ponto.calcula([angRad + NOVENTA - (TRINTA/10), NovoXZero, NovoYZero, (BASE/18)*3.5]);
+    var pontoJ = App.strategiesCalculadora.ponto.calcula([angRad + NOVENTA + (TRINTA/10), NovoXZero, NovoYZero, (BASE/18)*3.5]);
+    var pontoK = App.strategiesCalculadora.ponto.calcula([angRad - NOVENTA - (TRINTA/10), NovoXZero, NovoYZero, (BASE/14)*3.5]);
+    var pontoL = App.strategiesCalculadora.ponto.calcula([angRad - NOVENTA + (TRINTA/10), NovoXZero, NovoYZero, (BASE/14)*3.5]);
+    var pontoM = App.strategiesCalculadora.ponto.calcula([angRad - angRetaP - (TRINTA/10), NovoXZero, NovoYZero, (BASE/16)*3.5]);
+    var pontoN = App.strategiesCalculadora.ponto.calcula([angRad - angRetaP + (TRINTA/10), NovoXZero, NovoYZero, (BASE/16)*3.5]);
+    var pontoO = App.strategiesCalculadora.ponto.calcula([angRad - CENTO_OITENTA - (TRINTA/10), NovoXZero, NovoYZero, (BASE/16)*3.5]);
+    var pontoP = App.strategiesCalculadora.ponto.calcula([angRad - CENTO_OITENTA + (TRINTA/10), NovoXZero, NovoYZero, (BASE/16)*3.5]);
+
+    // Reta - Força N e seta
+    desenhaReta(NovoXZero, NovoYZero, pontoE[0], pontoE[1], "#0F0", 3, "1");
+    desenhaReta(pontoI[0], pontoI[1], pontoE[0], pontoE[1], "#0F0", 3, "1");
+    desenhaReta(pontoJ[0], pontoJ[1], pontoE[0], pontoE[1], "#0F0", 3, "1");
 
     // Reta - Px
-    desenhaReta(NovoXZero, NovoYZero, pontoH[0], pontoH[1], "#FFF", 4, "1");
+    desenhaReta(NovoXZero, NovoYZero, pontoH[0], pontoH[1], "#CCC", 3, "1");
+    desenhaReta(pontoO[0], pontoO[1], pontoH[0], pontoH[1], "#CCC", 3, "1");
+    desenhaReta(pontoP[0], pontoP[1], pontoH[0], pontoH[1], "#CCC", 3, "1");
 
     // Reta - Py
-    desenhaReta(NovoXZero, NovoYZero, pontoF[0], pontoF[1], "#00F", 4, "1");
+    desenhaReta(NovoXZero, NovoYZero, pontoF[0], pontoF[1], "#00F", 3, "1");
+    desenhaReta(pontoK[0], pontoK[1], pontoF[0], pontoF[1], "#00F", 3, "1");
+    desenhaReta(pontoL[0], pontoL[1], pontoF[0], pontoF[1], "#00F", 3, "1");
 
     // Reta - P
-    desenhaReta(NovoXZero, NovoYZero, pontoG[0], pontoG[1], "#F0F", 4, "1");
+    desenhaReta(NovoXZero, NovoYZero, pontoG[0], pontoG[1], "#F0F", 3, "1");
+    desenhaReta(pontoM[0], pontoM[1], pontoG[0], pontoG[1], "#F0F", 3, "1");
+    desenhaReta(pontoN[0], pontoN[1], pontoG[0], pontoG[1], "#F0F", 3, "1");
+
+    escreveForcas(pontoE, pontoF, pontoG, pontoH);
+
+    // Retas Pontilhadas
+    var pontoQ = [pontoG[0], pontoG[1]-(BASE/30)];
+
+    var pontoR = App.strategiesCalculadora.pontoPxPy.calcula([NovoXZero, NovoYZero, pontoH[0], pontoH[1], angRad + NOVENTA, pontoQ[0], pontoQ[1]]);
+    desenhaReta(pontoQ[0], pontoQ[1], pontoR[0], pontoR[1], "#F0F", 1, "1");
+
+    var pontoS = App.strategiesCalculadora.pontoPxPy.calcula([NovoXZero, NovoYZero, pontoF[0], pontoF[1], angRad, pontoQ[0], pontoQ[1]]);
+    desenhaReta(pontoQ[0], pontoQ[1], pontoS[0], pontoS[1], "#F0F", 1, "1");
+
 
   }// Fim Função Redesenha
 
@@ -285,6 +331,44 @@ App.aplicacoes = (function ()
       pontoY,
       cor,
       espessura
+    ]);
+  }
+
+  var escreveForcas = function (pontoE, pontoF, pontoG, pontoH){
+    App.strategiesTela.construtorTexto.executa([
+      "1",
+      "N",
+      "#0f0",
+      "Bold 14px Trebuchet MS",
+      pontoE[0] + 5,
+      pontoE[1] + 5
+    ]);
+
+    App.strategiesTela.construtorTexto.executa([
+      "1",
+      "Px",
+      "#ccc",
+      "Bold 14px Trebuchet MS",
+      pontoH[0] + 5,
+      pontoH[1] + 5
+    ]);
+
+    App.strategiesTela.construtorTexto.executa([
+      "1",
+      "Py",
+      "#00f",
+      "Bold 14px Trebuchet MS",
+      pontoF[0] - 20,
+      pontoF[1] + 15
+    ]);
+
+    App.strategiesTela.construtorTexto.executa([
+      "1",
+      "P",
+      "#f0f",
+      "Bold 14px Trebuchet MS",
+      pontoG[0] + 10,
+      pontoG[1] + 10
     ]);
   }
 
@@ -356,7 +440,7 @@ App.aplicacoes = (function ()
       // para redesenhar e escreescrever
       var ponto = App.strategiesCalculadora.ponto.calcula([angRad, X_ZERO, Y_ZERO, BASE]);
       reDesenha(ponto[0], ponto[1], angRad);
-      //reEscreve(360-angFinal);**********************************************************************************
+      //reEscreve(360-angFinal);********************************************************************************** REESCREVE AQUI!!!!!!!!!!!
     });
   } //Fim ajustaKeydown
 
