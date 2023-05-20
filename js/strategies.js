@@ -546,15 +546,46 @@ App.strategiesCalculadora = (function ()
 
     return [x, y];
   }
+
+  var strategyPontoPxPy = function(array)
+  {
+    // Pontos que delimitam a reta destino
+    var Xa = array[0];
+    var Ya = array[1];
+    var Xb = array[2];
+    var Yb = array[3];
+
+    // Angulo base
+    var ang = array[4];
+
+    // Ponto sobre P
+    var X0 = array[5];
+    var Y0 = array[6];
+
+    // Equação da reta - buscando os coeficientes
+    var m = (Ya - Yb)/(Xa - Xb);
+
+    var a = m;
+    var b = -1;
+    var c = (-m*Xa) + Ya;
+
+    // Distância entre ponto e reta
+    var d = Math.abs((a*X0) + (b * Y0) + c) / Math.sqrt(Math.pow(a,2) + Math.pow(b,2));
+
+    return strategyPonto([ang, X0, Y0, d]);
+  }
+
   //
   // Utilizando as strategies
   // Instanciando a classe funcaoTrignonométrica, indicando a strategy requerida
   //
   var pt = new Calculadora(strategyPonto);
   var novoPt = new Calculadora(strategyNovoPonto);
+  var ptPxPy = new Calculadora(strategyPontoPxPy);
 
   return {
     ponto : pt,
     novoPonto : novoPt,
+    pontoPxPy : ptPxPy,
   }
 })();
