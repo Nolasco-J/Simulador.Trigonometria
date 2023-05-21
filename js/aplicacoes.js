@@ -243,10 +243,10 @@ App.aplicacoes = (function ()
     var pontoC = App.strategiesCalculadora.ponto.calcula([angRadInicial + NOVENTA, pontoB[0], pontoB[1], (BASE/18)*3]);
     var pontoD = App.strategiesCalculadora.ponto.calcula([angRadInicial + NOVENTA, pontoA[0], pontoA[1], (BASE/18)*3]);
 
-    desenhaReta(pontoA[0], pontoA[1], pontoB[0], pontoB[1], "#F00", 4, "1");
-    desenhaReta(pontoB[0], pontoB[1], pontoC[0], pontoC[1], "#F00", 4, "1");
-    desenhaReta(pontoC[0], pontoC[1], pontoD[0], pontoD[1], "#F00", 4, "1");
-    desenhaReta(pontoA[0], pontoA[1], pontoD[0], pontoD[1], "#F00", 4, "1");
+    desenhaReta(pontoA[0], pontoA[1], pontoB[0], pontoB[1], "#B22222", 4, "1");
+    desenhaReta(pontoB[0], pontoB[1], pontoC[0], pontoC[1], "#B22222", 4, "1");
+    desenhaReta(pontoC[0], pontoC[1], pontoD[0], pontoD[1], "#B22222", 4, "1");
+    desenhaReta(pontoA[0], pontoA[1], pontoD[0], pontoD[1], "#B22222", 4, "1");
 
     // Ângulo entre Py e P
     var angRetaP = CENTO_OITENTA-(DUZENTOS_SETENTA-angRadInicial)
@@ -283,19 +283,19 @@ App.aplicacoes = (function ()
     desenhaReta(pontoJ[0], pontoJ[1], pontoE[0], pontoE[1], "#0F0", 3, "1");
 
     // Reta - Px
-    desenhaReta(NovoXZero, NovoYZero, pontoH[0], pontoH[1], "#CCC", 3, "1");
-    desenhaReta(pontoO[0], pontoO[1], pontoH[0], pontoH[1], "#CCC", 3, "1");
-    desenhaReta(pontoP[0], pontoP[1], pontoH[0], pontoH[1], "#CCC", 3, "1");
+    desenhaReta(NovoXZero, NovoYZero, pontoH[0], pontoH[1], "#0fc", 3, "1");
+    desenhaReta(pontoO[0], pontoO[1], pontoH[0], pontoH[1], "#0fc", 3, "1");
+    desenhaReta(pontoP[0], pontoP[1], pontoH[0], pontoH[1], "#0fc", 3, "1");
 
     // Reta - Py
-    desenhaReta(NovoXZero, NovoYZero, pontoF[0], pontoF[1], "#00F", 3, "1");
-    desenhaReta(pontoK[0], pontoK[1], pontoF[0], pontoF[1], "#00F", 3, "1");
-    desenhaReta(pontoL[0], pontoL[1], pontoF[0], pontoF[1], "#00F", 3, "1");
+    desenhaReta(NovoXZero, NovoYZero, pontoF[0], pontoF[1], "#96f", 3, "1");
+    desenhaReta(pontoK[0], pontoK[1], pontoF[0], pontoF[1], "#96f", 3, "1");
+    desenhaReta(pontoL[0], pontoL[1], pontoF[0], pontoF[1], "#96f", 3, "1");
 
     // Reta - P
-    desenhaReta(NovoXZero, NovoYZero, pontoG[0], pontoG[1], "#F0F", 3, "1");
-    desenhaReta(pontoM[0], pontoM[1], pontoG[0], pontoG[1], "#F0F", 3, "1");
-    desenhaReta(pontoN[0], pontoN[1], pontoG[0], pontoG[1], "#F0F", 3, "1");
+    desenhaReta(NovoXZero, NovoYZero, pontoG[0], pontoG[1], "#DAA520", 3, "1");
+    desenhaReta(pontoM[0], pontoM[1], pontoG[0], pontoG[1], "#DAA520", 3, "1");
+    desenhaReta(pontoN[0], pontoN[1], pontoG[0], pontoG[1], "#DAA520", 3, "1");
 
     escreveForcas(pontoE, pontoF, pontoG, pontoH);
 
@@ -303,10 +303,10 @@ App.aplicacoes = (function ()
      var pontoQ = [pontoG[0], pontoG[1]-(BASE/30)];
 
      var pontoR = App.strategiesCalculadora.pontoPxPy.calcula([NovoXZero, NovoYZero, pontoH[0], pontoH[1], angRadInicial + NOVENTA, pontoQ[0], pontoQ[1]]);
-     desenhaReta(pontoQ[0], pontoQ[1], pontoR[0], pontoR[1], "#F0F", 1, "1");
+     desenhaReta(pontoQ[0], pontoQ[1], pontoR[0], pontoR[1], "#DAA520", 1, "1");
  
      var pontoS = App.strategiesCalculadora.pontoPxPy.calcula([NovoXZero, NovoYZero, pontoF[0], pontoF[1], angRadInicial, pontoQ[0], pontoQ[1]]);
-     desenhaReta(pontoQ[0], pontoQ[1], pontoS[0], pontoS[1], "#F0F", 1, "1");
+     desenhaReta(pontoQ[0], pontoQ[1], pontoS[0], pontoS[1], "#DAA520", 1, "1");
   }
 
   var reescreve = function(angulo, p, n, a){
@@ -397,10 +397,10 @@ App.aplicacoes = (function ()
     var pontoC = App.strategiesCalculadora.ponto.calcula([angRad + NOVENTA, pontoB[0], pontoB[1], (BASE/18)*3]);
     var pontoD = App.strategiesCalculadora.ponto.calcula([angRad + NOVENTA, pontoA[0], pontoA[1], (BASE/18)*3]);
 
-    desenhaReta(pontoA[0], pontoA[1], pontoB[0], pontoB[1], "#F00", 4, "1");
-    desenhaReta(pontoB[0], pontoB[1], pontoC[0], pontoC[1], "#F00", 4, "1");
-    desenhaReta(pontoC[0], pontoC[1], pontoD[0], pontoD[1], "#F00", 4, "1");
-    desenhaReta(pontoA[0], pontoA[1], pontoD[0], pontoD[1], "#F00", 4, "1");
+    desenhaReta(pontoA[0], pontoA[1], pontoB[0], pontoB[1], "#B22222", 4, "1");
+    desenhaReta(pontoB[0], pontoB[1], pontoC[0], pontoC[1], "#B22222", 4, "1");
+    desenhaReta(pontoC[0], pontoC[1], pontoD[0], pontoD[1], "#B22222", 4, "1");
+    desenhaReta(pontoA[0], pontoA[1], pontoD[0], pontoD[1], "#B22222", 4, "1");
 
 
     // Ângulo entre Py e P
@@ -437,19 +437,19 @@ App.aplicacoes = (function ()
     desenhaReta(pontoJ[0], pontoJ[1], pontoE[0], pontoE[1], "#0F0", 3, "1");
 
     // Reta - Px
-    desenhaReta(NovoXZero, NovoYZero, pontoH[0], pontoH[1], "#CCC", 3, "1");
-    desenhaReta(pontoO[0], pontoO[1], pontoH[0], pontoH[1], "#CCC", 3, "1");
-    desenhaReta(pontoP[0], pontoP[1], pontoH[0], pontoH[1], "#CCC", 3, "1");
+    desenhaReta(NovoXZero, NovoYZero, pontoH[0], pontoH[1], "#0fc", 3, "1");
+    desenhaReta(pontoO[0], pontoO[1], pontoH[0], pontoH[1], "#0fc", 3, "1");
+    desenhaReta(pontoP[0], pontoP[1], pontoH[0], pontoH[1], "#0fc", 3, "1");
 
     // Reta - Py
-    desenhaReta(NovoXZero, NovoYZero, pontoF[0], pontoF[1], "#00F", 3, "1");
-    desenhaReta(pontoK[0], pontoK[1], pontoF[0], pontoF[1], "#00F", 3, "1");
-    desenhaReta(pontoL[0], pontoL[1], pontoF[0], pontoF[1], "#00F", 3, "1");
+    desenhaReta(NovoXZero, NovoYZero, pontoF[0], pontoF[1], "#96f", 3, "1");
+    desenhaReta(pontoK[0], pontoK[1], pontoF[0], pontoF[1], "#96f", 3, "1");
+    desenhaReta(pontoL[0], pontoL[1], pontoF[0], pontoF[1], "#96f", 3, "1");
 
     // Reta - P
-    desenhaReta(NovoXZero, NovoYZero, pontoG[0], pontoG[1], "#F0F", 3, "1");
-    desenhaReta(pontoM[0], pontoM[1], pontoG[0], pontoG[1], "#F0F", 3, "1");
-    desenhaReta(pontoN[0], pontoN[1], pontoG[0], pontoG[1], "#F0F", 3, "1");
+    desenhaReta(NovoXZero, NovoYZero, pontoG[0], pontoG[1], "#DAA520", 3, "1");
+    desenhaReta(pontoM[0], pontoM[1], pontoG[0], pontoG[1], "#DAA520", 3, "1");
+    desenhaReta(pontoN[0], pontoN[1], pontoG[0], pontoG[1], "#DAA520", 3, "1");
 
     escreveForcas(pontoE, pontoF, pontoG, pontoH);
 
@@ -457,10 +457,10 @@ App.aplicacoes = (function ()
     var pontoQ = [pontoG[0], pontoG[1]-(BASE/30)];
 
     var pontoR = App.strategiesCalculadora.pontoPxPy.calcula([NovoXZero, NovoYZero, pontoH[0], pontoH[1], angRad + NOVENTA, pontoQ[0], pontoQ[1]]);
-    desenhaReta(pontoQ[0], pontoQ[1], pontoR[0], pontoR[1], "#F0F", 1, "1");
+    desenhaReta(pontoQ[0], pontoQ[1], pontoR[0], pontoR[1], "#DAA520", 1, "1");
 
     var pontoS = App.strategiesCalculadora.pontoPxPy.calcula([NovoXZero, NovoYZero, pontoF[0], pontoF[1], angRad, pontoQ[0], pontoQ[1]]);
-    desenhaReta(pontoQ[0], pontoQ[1], pontoS[0], pontoS[1], "#F0F", 1, "1");
+    desenhaReta(pontoQ[0], pontoQ[1], pontoS[0], pontoS[1], "#DAA520", 1, "1");
 
 
   }// Fim Função Redesenha
@@ -492,7 +492,7 @@ App.aplicacoes = (function ()
     App.strategiesTela.construtorTexto.executa([
       "1",
       "Px",
-      "#ccc",
+      "#0fc",
       "Bold 14px Trebuchet MS",
       pontoH[0] + 5,
       pontoH[1] + 5
@@ -501,7 +501,7 @@ App.aplicacoes = (function ()
     App.strategiesTela.construtorTexto.executa([
       "1",
       "Py",
-      "#00f",
+      "#96f",
       "Bold 14px Trebuchet MS",
       pontoF[0] - 20,
       pontoF[1] + 15
@@ -510,7 +510,7 @@ App.aplicacoes = (function ()
     App.strategiesTela.construtorTexto.executa([
       "1",
       "P",
-      "#f0f",
+      "#DAA520",
       "Bold 14px Trebuchet MS",
       pontoG[0] + 10,
       pontoG[1] + 10
