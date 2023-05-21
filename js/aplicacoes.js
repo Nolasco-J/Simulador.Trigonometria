@@ -119,6 +119,99 @@ App.aplicacoes = (function ()
       125
     ]);
 
+    mensagem = "Ângulo entre o plano inclinado e a base: ";
+      App.strategiesTela.construtorTexto.executa([
+        "2",
+        mensagem,
+        "#0fc",
+        "Bold 18px Trebuchet MS",
+        objCanvas.canvasWidth/2 + objCanvas.canvasWidth/22 + ((BASE/18)),
+        170
+      ]);
+
+      mensagem = "Massa do corpo sobre o plano inclinado:";
+      App.strategiesTela.construtorTexto.executa([
+        "2",
+        mensagem,
+        "#0fc",
+        "Bold 18px Trebuchet MS",
+        objCanvas.canvasWidth/2 + objCanvas.canvasWidth/22 + ((BASE/18)),
+        225
+      ]);
+
+      mensagem = "10 kg";
+      App.strategiesTela.construtorTexto.executa([
+        "2",
+        mensagem,
+        "#FFF",
+        "Bold 18px Trebuchet MS",
+        objCanvas.canvasWidth/2 + objCanvas.canvasWidth/22 + ((BASE/18)*7),
+        250
+      ]);
+
+      mensagem = "Força Peso: ";
+      App.strategiesTela.construtorTexto.executa([
+        "2",
+        mensagem,
+        "#0fc",
+        "Bold 18px Trebuchet MS",
+        objCanvas.canvasWidth/2 + objCanvas.canvasWidth/22 + ((BASE/18)),
+        280
+      ]);
+
+      mensagem = "Força Normal: ";
+      App.strategiesTela.construtorTexto.executa([
+        "2",
+        mensagem,
+        "#0fc",
+        "Bold 18px Trebuchet MS",
+        objCanvas.canvasWidth/2 + objCanvas.canvasWidth/22 + ((BASE/18)),
+        305
+      ]);
+
+      mensagem = "Aceleração: ";
+      App.strategiesTela.construtorTexto.executa([
+        "2",
+        mensagem,
+        "#0fc",
+        "Bold 18px Trebuchet MS",
+        objCanvas.canvasWidth/2 + objCanvas.canvasWidth/22 + ((BASE/18)),
+        330
+      ]);
+
+      mensagem = "Considerando: ";
+      App.strategiesTela.construtorTexto.executa([
+        "2",
+        mensagem,
+        "#0fc",
+        "Bold 18px Trebuchet MS",
+        objCanvas.canvasWidth/2 + objCanvas.canvasWidth/22 + ((BASE/18)),
+        360
+      ]);
+
+      mensagem = "Aceleração da gravidade: 9,8m/s²";
+      App.strategiesTela.construtorTexto.executa([
+        "2",
+        mensagem,
+        "#0fc",
+        "Bold 18px Trebuchet MS",
+        objCanvas.canvasWidth/2 + objCanvas.canvasWidth/22 + ((BASE/18)),
+        385
+      ]);
+
+      mensagem = "Sem atrito.";
+      App.strategiesTela.construtorTexto.executa([
+        "2",
+        mensagem,
+        "#0fc",
+        "Bold 18px Trebuchet MS",
+        objCanvas.canvasWidth/2 + objCanvas.canvasWidth/22 + ((BASE/18)),
+        410
+      ]);
+
+      var calculos = calculaForcasAceleracao((30*CENTO_OITENTA)/180);  
+      reescreve(30, calculos[0], calculos[1], calculos[2]);
+
      //Base do plano inclinado - no canvas 2 pois não precisa redesenhar
     desenhaReta((X_ZERO)-(BASE), Y_ZERO, (X_ZERO), Y_ZERO, "#FFF", 4, "2");
 
@@ -214,6 +307,49 @@ App.aplicacoes = (function ()
  
      var pontoS = App.strategiesCalculadora.pontoPxPy.calcula([NovoXZero, NovoYZero, pontoF[0], pontoF[1], angRadInicial, pontoQ[0], pontoQ[1]]);
      desenhaReta(pontoQ[0], pontoQ[1], pontoS[0], pontoS[1], "#F0F", 1, "1");
+  }
+
+  var reescreve = function(angulo, p, n, a){
+
+    var mensagem = angulo + "°";
+    App.strategiesTela.construtorTexto.executa([
+      "1",
+      mensagem,
+      "#FFF",
+      "Bold 18px Trebuchet MS",
+      objCanvas.canvasWidth/2 + objCanvas.canvasWidth/22 + ((BASE/18)*7.2),
+      195
+    ]);
+
+    mensagem = p + " N";
+    App.strategiesTela.construtorTexto.executa([
+      "1",
+      mensagem,
+      "#FFF",
+      "Bold 18px Trebuchet MS",
+      objCanvas.canvasWidth/2 + objCanvas.canvasWidth/22 + ((BASE/18)*6),
+      280
+    ]);
+
+    mensagem = n + " N";
+    App.strategiesTela.construtorTexto.executa([
+      "1",
+      mensagem,
+      "#FFF",
+      "Bold 18px Trebuchet MS",
+      objCanvas.canvasWidth/2 + objCanvas.canvasWidth/22 + ((BASE/18)*7),
+      305
+    ]);
+
+    mensagem = a + " m/s²";
+    App.strategiesTela.construtorTexto.executa([
+      "1",
+      mensagem,
+      "#FFFS",
+      "Bold 18px Trebuchet MS",
+      objCanvas.canvasWidth/2 + objCanvas.canvasWidth/22 + ((BASE/18)*6),
+      330
+    ]);
   }
 
   //Recebe as coordenadas para calcular o novo ponto
@@ -381,9 +517,35 @@ App.aplicacoes = (function ()
     ]);
   }
 
+  var calculaForcasAceleracao = function(angFinal){
+/*
+      Ângulo entre o Plano Móvel e a Base: 
+
+      Massa: 10kg
+      g: 9,8 m/s
+      Sem Atrito
+
+      Aceleração do corpo -> a = g.senAngulo
+
+      Força Peso = m*g
+      Força Normal N = m*g*cosAngulo
+
+      Considerando:
+      Aceleração da Gravidade: 9,8m/s2.
+      Sem atrito.
+     */
+      var massa = 10;
+      var g = 9.8;
+      var p = massa * g;
+      var n = p * Math.cos(angFinal);
+      var a = g * Math.sin(angFinal);
+
+      return [p, parseFloat(n).toFixed(5), parseFloat(a).toFixed(5)];
+
+  }
+
   // Fora da função, pois deve guardar o valor final dentro da função
-  //var angFinal = 150° --- corrigido, equivale a 30° com o espelhamento da imagem, que é o que queremos;
-  // Limitando o ângulo entre 180° e 100° - corrigindo: 0° a 80°
+  // Limitando o ângulo na tela entre 0° a 50°
   var angFinal;
   /*
     Detecta botões do teclado pressionados
@@ -445,15 +607,16 @@ App.aplicacoes = (function ()
         default:
           return;
       }
+
+      var calculos = calculaForcasAceleracao(angRad-CENTO_OITENTA);    
+
       //chama função para calcular o ponto da reta vermelha,
       // para redesenhar e escreescrever
       var ponto = App.strategiesCalculadora.ponto.calcula([angRad, X_ZERO, Y_ZERO, BASE]);
       reDesenha(ponto[0], ponto[1], angRad);
-      //reEscreve(360-angFinal);********************************************************************************** REESCREVE AQUI!!!!!!!!!!!
+      reescreve(angFinal-180, calculos[0], calculos[1], calculos[2]);
     });
   } //Fim ajustaKeydown
-
-
 
   /*
     Detecta cliques
